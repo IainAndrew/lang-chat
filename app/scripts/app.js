@@ -9,4 +9,16 @@
  * Main module of the application.
  */
 angular
-  .module('App', []);
+  .module('App', [
+    'ui.router'
+  ])
+  .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
+    $urlRouterProvider
+      .otherwise('/');
+
+    $stateProvider
+      .state('main', {
+        url: '/',
+        templateUrl: 'views/main.html'
+      });
+  }]);
