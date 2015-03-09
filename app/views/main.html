@@ -5,13 +5,12 @@
 </div>
 
 <form ng-submit="submit($event)">
-  <select name="nativeLang">
-    <option ng-repeat="lang in langsAbbrev" ng-model="selectedNativeLang" ng-value="lang">{{lang}}</option>
-  </select>
-  to
-  <select name="translateLang">
+  <!-- <select name="nativeLang">
     <option ng-repeat="lang in langsAbbrev">{{lang}}</option>
-  </select>
+  </select> -->
+  <select ng-model="selectedNativeLang" ng-options="lang for lang in langsAbbrev"></select>
+  to
+  <select ng-model="selectedTranslateLang" ng-options="lang for lang in langsAbbrev"></select>
   <br />
   <input type="text" ng-model="name" ng-hide="usernameSelected" ng-disabled="stayAnon == 'true'" placeholder="Choose a username">
   <span ng-show="usernameSelected">{{name}}:</span>
@@ -21,6 +20,4 @@
   <label for="checkbox" ng-hide="usernameSelected">Stay anonymous</label>
   <input type="checkbox" ng-hide="usernameSelected" ng-model="stayAnon" ng-true-value="true" ng-false-value="false" id="checkbox">
   <br />
-  <span>{{message}}</span>
-  <h1>{{lang}}</h1>
 </form>
