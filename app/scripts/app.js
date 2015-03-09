@@ -10,7 +10,8 @@
  */
 angular
   .module('App', [
-    'ui.router'
+    'ui.router',
+    'firebase'
   ])
   .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
     $urlRouterProvider
@@ -19,6 +20,7 @@ angular
     $stateProvider
       .state('main', {
         url: '/',
-        templateUrl: 'views/main.html'
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
       });
   }]);

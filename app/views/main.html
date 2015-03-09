@@ -1,1 +1,11 @@
-<p>main content</p>
+<div id="messages">
+  <div ng-repeat="message in messages">
+    {{message.user}}: {{message.body}}
+  </div>
+</div>
+
+<form ng-submit="addMessage($event)">
+  <input type="text" ng-model="name" placeholder="User">
+  <input type="text" ng-model="message" placeholder="Message...">
+  <button type="submit">send</button>
+</form>
