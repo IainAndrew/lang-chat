@@ -22,8 +22,12 @@ angular.module('App')
       .success(function(data) {
         $scope.langs = data.langs;
         $scope.langsAbbrev = Object.keys($scope.langs); // abbreviated language names
-        $scope.selectedNativeLang = 'en';
-        $scope.selectedTranslateLang = 'fr';
+        $scope.langVals = [];
+        for(var key in $scope.langs) {
+          $scope.langVals.push($scope.langs[key]); // values without keys
+        }
+        $scope.selectedNativeLang = 'English';
+        $scope.selectedTranslateLang = 'French';
       })
       .error(function(status) {
         console.log(status);
@@ -32,7 +36,7 @@ angular.module('App')
     $scope.submit = function(e) {
 
       // translate method
-      $http.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=' + key + '&lang=' + $scope.selectedNativeLang + '-' + $scope.selectedTranslateLang + '&text=' + $scope.message)
+      $http.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=' + key + '&lang=' + /* change these -> */ $scope.selectedNativeLang + '-' + $scope.selectedTranslateLang + '&text=' + $scope.message)
         .success(function(data) {
           requestSuccess(data);
         })
