@@ -21,13 +21,16 @@ angular.module('App')
     $http.get('https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=' + key + '&ui=en')
       .success(function(data) {
         $scope.langs = data.langs;
-        $scope.langsAbbrev = Object.keys($scope.langs); // abbreviated language names
-        $scope.langVals = [];
-        for(var key in $scope.langs) {
-          $scope.langVals.push($scope.langs[key]); // values without keys
-        }
-        $scope.selectedNativeLang = 'English';
-        $scope.selectedTranslateLang = 'French';
+        // $scope.langsAbbrev = Object.keys($scope.langs); // abbreviated language names
+        // $scope.langVals = [];
+        // for(var key in $scope.langs) {
+        //   $scope.langVals.push($scope.langs[key]); // values without keys
+        // }
+        $scope.selectedNativeLang = 'en';
+        // setInterval(function() {
+        //   console.log($scope.selectedNativeLang);
+        // }, 1000);
+        $scope.selectedTranslateLang = 'fr';
       })
       .error(function(status) {
         console.log(status);
