@@ -27,9 +27,6 @@ angular.module('App')
         //   $scope.langVals.push($scope.langs[key]); // values without keys
         // }
         $scope.selectedNativeLang = 'en';
-        // setInterval(function() {
-        //   console.log($scope.selectedNativeLang);
-        // }, 1000);
         $scope.selectedTranslateLang = 'fr';
       })
       .error(function(status) {
@@ -39,7 +36,7 @@ angular.module('App')
     $scope.submit = function(e) {
 
       // translate method
-      $http.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=' + key + '&lang=' + /* change these -> */ $scope.selectedNativeLang + '-' + $scope.selectedTranslateLang + '&text=' + $scope.message)
+      $http.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=' + key + '&lang=' + $scope.selectedNativeLang + '-' + $scope.selectedTranslateLang + '&text=' + $scope.message)
         .success(function(data) {
           requestSuccess(data);
         })
@@ -60,7 +57,8 @@ angular.module('App')
         $scope.messages.$add({ // save info to database
           user: $scope.name,
           anon: $scope.stayAnon,
-          body: $scope.translatedMessage,
+          bodyOriginal: $scope.message,
+          bodyTranslated: $scope.translatedMessage,
           time: $scope.time,
           from: $scope.selectedNativeLang,
           to: $scope.selectedTranslateLang
