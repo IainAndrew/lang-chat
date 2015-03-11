@@ -11,6 +11,7 @@ angular.module('App')
   .controller('MainCtrl', function ($scope, $firebaseArray, $http) {
     var ref = new Firebase('https://gptgzo9lwy0.firebaseio-demo.com/');
     $scope.messages = $firebaseArray(ref);
+    $scope.noTranslation = false;
     $scope.usernameSelected = false;
     $scope.stayAnon = false;
     $scope.anonUsername = 'anon' + Math.floor((Math.random()*90000)+10000); // generate random username for anons
@@ -34,6 +35,11 @@ angular.module('App')
       });
 
     $scope.submit = function(e) {
+
+      if ($scope.noTranslation) {
+        $scope.selectedTranslateLang = $scope.selectedNativeLang; // no translation
+        console.log($scope.noTranslation);
+      }
 
       // translate method
       $http.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=' + key + '&lang=' + $scope.selectedNativeLang + '-' + $scope.selectedTranslateLang + '&text=' + $scope.message)
@@ -66,7 +72,6 @@ angular.module('App')
         $scope.usernameSelected = true;
         $scope.message = ""; // reset message input after submitted
       }
-
     
     }
   });

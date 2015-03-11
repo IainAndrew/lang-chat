@@ -5,19 +5,18 @@
 </div>
 
 <form ng-submit="submit($event)">
-  <!-- <select name="nativeLang">
-    <option ng-repeat="lang in langs">{{lang}}</option>
-  </select> -->
   <select ng-model="selectedNativeLang" ng-options="key as value for (key,value) in langs"></select>
   to
-  <select ng-model="selectedTranslateLang" ng-options="key as value for (key,value) in langs"></select>
+  <select ng-disabled="noTranslation == 'true'" ng-model="selectedTranslateLang" ng-options="key as value for (key,value) in langs"></select>
+  <label for="no-translation">No translation</label>
+  <input type="checkbox" ng-model="noTranslation" ng-true-value="true" id="no-translation">
   <br />
-  <input type="text" ng-model="name" ng-hide="usernameSelected" ng-disabled="stayAnon == 'true'" placeholder="Choose a username">
+  <input id="usernameInput" type="text" ng-model="name" ng-hide="usernameSelected" ng-disabled="stayAnon == 'true'" placeholder="Choose a username">
   <span ng-show="usernameSelected">{{name}}:</span>
   <input type="text" ng-model="message" placeholder="Type your message here">
   <button type="submit">Send</button>
   <br />
-  <label for="checkbox" ng-hide="usernameSelected">Stay anonymous</label>
-  <input type="checkbox" ng-hide="usernameSelected" ng-model="stayAnon" ng-true-value="true" ng-false-value="false" id="checkbox">
+  <label for="stay-anon" ng-hide="usernameSelected">Stay anonymous</label>
+  <input type="checkbox" ng-hide="usernameSelected" ng-model="stayAnon" ng-true-value="true" ng-false-value="false" id="stay-anon">
   <br />
 </form>
