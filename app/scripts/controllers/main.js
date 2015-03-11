@@ -38,7 +38,6 @@ angular.module('App')
 
       if ($scope.noTranslation) {
         $scope.selectedTranslateLang = $scope.selectedNativeLang; // no translation
-        console.log($scope.noTranslation);
       }
 
       // translate method
