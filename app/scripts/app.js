@@ -8,6 +8,7 @@
  *
  * Main module of the application.
  */
+
 angular
   .module('App', [
     'ui.router',
@@ -22,5 +23,10 @@ angular
         url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
+      })
+      .state('chat', {
+        url: '/room',
+        templateUrl: 'views/chat.html',
+        controller: 'ChatCtrl'
       });
   }]);

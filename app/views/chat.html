@@ -1,0 +1,22 @@
+<div id="messages">
+  <div ng-repeat="message in messages">
+    {{message.user}}: {{message.bodyTranslated}} {{message.time}}
+  </div>
+</div>
+
+<form name="messageForm" ng-submit="submit($event)">
+  <select ng-model="selectedNativeLang" ng-options="key as value for (key,value) in langs"></select>
+  to
+  <select ng-disabled="noTranslation == 'true'" ng-model="selectedTranslateLang" ng-options="key as value for (key,value) in langs"></select>
+  <label for="no-translation">No translation</label>
+  <input type="checkbox" ng-model="noTranslation" ng-true-value="true" id="no-translation">
+  <br />
+  <input ng-required="!stayAnon" id="usernameInput" type="text" ng-model="name" ng-hide="usernameSelected" ng-disabled="stayAnon == 'true'" placeholder="Choose a username">
+  <span ng-show="usernameSelected">{{name}}:</span>
+  <input required type="text" ng-model="message" placeholder="Type your message here">
+  <button type="submit">Send</button>
+  <br />
+  <label for="stay-anon" ng-hide="usernameSelected">Stay anonymous</label>
+  <input type="checkbox" ng-hide="usernameSelected" ng-model="stayAnon" ng-true-value="true" id="stay-anon">
+  <br />
+</form>
