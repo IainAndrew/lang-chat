@@ -22,6 +22,6 @@ angular.module('App')
     };
 
     $scope.joinChat = function(room) {
-      $location.path('/chat/' + $scope.rooms[room].$id + '/' + $scope.rooms[room].roomName);
+      $location.path('/chat/' + $scope.rooms[room].$id + '/' + $scope.rooms[room].roomName.toLowerCase().replace(' ', '-'));
     };
   });
