@@ -10,5 +10,6 @@
 
 angular.module('App')
   .controller('MainCtrl', function ($rootScope, $scope) {
-    
+    $rootScope.URL = 'https://lang-chat.firebaseio.com/';
+    var ref = new Firebase($rootScope.URL);
   });

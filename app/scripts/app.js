@@ -12,21 +12,37 @@
 angular
   .module('App', [
     'ui.router',
-    'firebase'
+    'firebase',
+    'ngRoute'
   ])
-  .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider
-      .otherwise('/');
-
-    $stateProvider
-      .state('main', {
-        url: '/',
+  .config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+      .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'HomeCtrl'
       })
-      .state('chat', {
-        url: '/room',
+      .when('/chat/:roomId/:roomName', {
         templateUrl: 'views/chat.html',
         controller: 'ChatCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
       });
+
   }]);
+  // .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
+  //   $urlRouterProvider
+  //     .otherwise('/');
+
+  //   $stateProvider
+  //     .state('main', {
+  //       url: '/',
+  //       templateUrl: 'views/main.html',
+  //       controller: 'HomeCtrl'
+  //     })
+  //     .state('chat', {
+  //       url: '/chat/:roomid',
+  //       templateUrl: 'views/chat.html',
+  //       controller: 'ChatCtrl'
+  //     });
+  // }]);
