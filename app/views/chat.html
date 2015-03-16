@@ -11,7 +11,8 @@
   <label for="no-translation">No translation</label>
   <input type="checkbox" ng-model="noTranslation" ng-true-value="true" id="no-translation">
   <br />
-  <input ng-required="!stayAnon" id="usernameInput" type="text" ng-model="name" ng-hide="usernameSelected" ng-disabled="stayAnon == 'true'" placeholder="Choose a username">
+  <input name="name" ng-maxlength="15" ng-required="!stayAnon" id="usernameInput" type="text" ng-model="name" ng-hide="usernameSelected" ng-disabled="stayAnon == 'true'" placeholder="Choose a username">
+  <span class="error" ng-show="messageForm.name.$error.maxlength">Username too long</span>
   <span ng-show="usernameSelected">{{name}}:</span>
   <input required type="text" ng-model="message" placeholder="Type your message here">
   <button type="submit">Send</button>

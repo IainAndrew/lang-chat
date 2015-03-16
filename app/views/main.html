@@ -1,6 +1,9 @@
-<input required type="text" ng-model="roomName" placeholder="Chatroom name">
+<form name="newRoomForm" ng-submit="newRoom()">
 
-<button ng-click="newRoom()">Create</button>
+  <input required type="text" ng-model="roomName" placeholder="Chatroom name">
+  <button type="submit">Create Room</button>
+
+</form>
 
 <!-- <div class="room" ng-repeat="room in rooms">
   <span>{{room.roomName}}</span>
