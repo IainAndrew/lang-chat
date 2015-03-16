@@ -1,8 +1,8 @@
-<input type="text" ng-model="roomName" placeholder="Chatroom name">
+<input required type="text" ng-model="roomName" placeholder="Chatroom name">
 
 <button ng-click="newRoom()">Create</button>
 
-<div class="room" ng-repeat="room in rooms">
+<!-- <div class="room" ng-repeat="room in rooms">
   <span>{{room.roomName}}</span>
   <a href="javascript:" ng-click="joinChat($index)">Enter</a>
-</div>
+</div> -->

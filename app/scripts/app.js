@@ -21,7 +21,7 @@ angular
         templateUrl: 'views/main.html',
         controller: 'HomeCtrl'
       })
-      .when('/chat/:roomId/:roomName', {
+      .when('/:roomId/:roomName', {
         templateUrl: 'views/chat.html',
         controller: 'ChatCtrl'
       })

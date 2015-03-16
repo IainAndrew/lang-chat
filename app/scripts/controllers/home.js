@@ -12,16 +12,21 @@ angular.module('App')
   .controller('HomeCtrl', function ($scope, $rootScope, $firebaseArray, $location) {
     var ref = new Firebase('https://lang-chat.firebaseio.com/chatRooms');
     var sync = $firebaseArray(ref);
-    $scope.rooms = sync;
+    // $scope.rooms = sync;
+    var roomNameChosen = false;
 
     $scope.newRoom = function() {
       sync.$add({
         roomName: $scope.roomName
+      }).then(function(ref) {
+        var id = ref.key();
+        $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-'));
       });
       console.log($scope.roomName + ' created');
+      roomNameChosen = true;
     };
 
-    $scope.joinChat = function(room) {
-      $location.path('/chat/' + $scope.rooms[room].$id + '/' + $scope.rooms[room].roomName.toLowerCase().replace(' ', '-'));
-    };
+    // $scope.joinChat = function(room) {
+    //   $location.path('/' + $scope.rooms[room].$id + '/' + $scope.rooms[room].roomName.toLowerCase().replace(' ', '-'));
+    // };
   });
