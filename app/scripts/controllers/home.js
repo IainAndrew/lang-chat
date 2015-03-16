@@ -14,10 +14,14 @@ angular.module('App')
     var sync = $firebaseArray(ref);
     // $scope.rooms = sync;
     var roomNameChosen = false;
+    $scope.noPassword = false;
+    $scope.password = '';
 
     $scope.newRoom = function() {
       sync.$add({
-        roomName: $scope.roomName
+        roomName: $scope.roomName,
+        noPassword: $scope.noPassword,
+        password: $scope.password
       }).then(function(ref) {
         var id = ref.key();
         $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-'));
