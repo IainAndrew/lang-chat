@@ -1,20 +1,23 @@
-<form name="passwordForm" ng-submit="passwordSubmit()" ng-show="passwordRequired">
+<form name="passwordForm" ng-submit="passwordSubmit()" ng-show="passwordRequired" ng-hide="passwordCorrect">
   <input type="password" ng-model="passwordEntered">
   <button type="submit">Submit</button>
 </form>
 
-<div id="messages">
+<div id="messages" ng-show="passwordCorrect || !passwordRequired">
   <div ng-repeat="message in chatMessages">
-    {{message.user}}: {{message.bodyTranslated}} {{message.time}}
+    {{message.user}}: {{message.bodyTranslated}} 
   </div>
 </div>
 
-<form name="messageForm" ng-submit="submit($event)">
+<br><br>
+
+<form name="messageForm" ng-submit="submit($event)" ng-show="passwordCorrect || !passwordRequired">
   <select ng-model="selectedNativeLang" ng-options="key as value for (key,value) in langs"></select>
   to
-  <select ng-disabled="noTranslation == 'true'" ng-model="selectedTranslateLang" ng-options="key as value for (key,value) in langs"></select>
+  <select ng-disabled="noTranslation" ng-model="selectedTranslateLang" ng-options="key as value for (key,value) in langs"></select>
   <label for="no-translation">No translation</label>
   <input type="checkbox" ng-model="noTranslation" ng-true-value="true" id="no-translation">
+  <br />
   <br />
   <input name="name" ng-maxlength="15" ng-required="!stayAnon" id="usernameInput" type="text" ng-model="name" ng-hide="usernameSelected" ng-disabled="stayAnon == 'true'" placeholder="Choose a username">
   <span class="error" ng-show="messageForm.name.$error.maxlength">Username too long</span>

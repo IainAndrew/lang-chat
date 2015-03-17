@@ -17,6 +17,7 @@ angular.module('App')
     var msgsSync = $firebaseArray(chatRoom.child('chatMessages'));
     $scope.chatMessages = msgsSync;
 
+    $scope.passwordCorrect = false;
     $scope.noTranslation = false;
     $scope.usernameSelected = false;
     $scope.stayAnon = false;
@@ -29,8 +30,11 @@ angular.module('App')
       $scope.passwordSubmit = function() {
         if ($scope.passwordEntered === roomSync.passwordVal) {
           console.log('correct');
+          $scope.passwordCorrect = true;
         } else {
-          console.log('incorrect');
+          alert('incorrect');
+          $scope.passwordCorrect = false;
+          $scope.passwordEntered = '';
         }
       };
     });
@@ -81,7 +85,7 @@ angular.module('App')
           to: $scope.selectedTranslateLang
         });
         $scope.usernameSelected = true;
-        $scope.message = ""; // reset message input after submitted
+        $scope.message = ''; // reset message input after submitted
       }
     
     }
