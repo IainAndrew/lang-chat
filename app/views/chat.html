@@ -1,5 +1,5 @@
-<form name="passwordForm">
-  <input type="password">
+<form name="passwordForm" ng-submit="passwordSubmit()" ng-show="passwordRequired">
+  <input type="password" ng-model="passwordEntered">
   <button type="submit">Submit</button>
 </form>
 

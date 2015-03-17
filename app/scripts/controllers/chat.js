@@ -24,7 +24,17 @@ angular.module('App')
 
     var key = 'trnsl.1.1.20150309T154331Z.204e43f2acbf0788.022db5406add6b3a68a6f48e8e956adcb8a0df24';
 
-    console.log(roomSync);
+    roomSync.$loaded(function() {
+      $scope.passwordRequired = !roomSync.noPassword;
+      $scope.passwordSubmit = function() {
+        if ($scope.passwordEntered === roomSync.passwordVal) {
+          console.log('correct');
+        } else {
+          console.log('incorrect');
+        }
+      };
+    });
+
     // getLangs method for select elements
     $http.get('https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=' + key + '&ui=en')
       .success(function(data) {

@@ -15,14 +15,14 @@ angular.module('App')
     // $scope.rooms = sync;
     var roomNameChosen = false;
     $scope.noPassword = false;
-    $scope.password = '';
+    $scope.passwordVal = '';
 
     $scope.newRoom = function() {
       sync.$add({
         roomName: $scope.roomName,
         noPassword: $scope.noPassword,
-        password: $scope.password
-      }).then(function(ref) {
+        passwordVal: $scope.passwordVal
+      }) .then(function(ref) {
         var id = ref.key();
         $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-'));
       });
