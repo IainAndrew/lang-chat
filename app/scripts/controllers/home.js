@@ -14,7 +14,7 @@ angular.module('App')
     var sync = $firebaseArray(ref);
     // $scope.rooms = sync;
     var roomNameChosen = false;
-    $scope.noPassword = false;
+    $scope.noPassword = true;
     $scope.passwordVal = '';
 
     $scope.newRoom = function() {
