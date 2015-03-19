@@ -24,11 +24,8 @@ angular.module('App')
         passwordVal: $scope.passwordVal
       }) .then(function(ref) {
         var id = ref.key();
-        if (!$scope.noPassword) {
-          $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-') + '/login');
-        } else {
-          $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-'));
-        }
+        $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-'));
+        $rootScope.loggedIn = true;
       });
       console.log($scope.roomName + ' created');
       roomNameChosen = true;

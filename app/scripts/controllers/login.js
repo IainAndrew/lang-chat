@@ -14,9 +14,6 @@ angular.module('App')
     var roomSync = $firebaseObject(chatRoom);
     $scope.roomInfo = roomSync;
 
-    var msgsSync = $firebaseArray(chatRoom.child('chatMessages'));
-    $scope.chatMessages = msgsSync;
-
     $scope.passwordCorrect = false;
     roomSync.$loaded(function() {
       $scope.passwordRequired = !roomSync.noPassword;
@@ -25,6 +22,7 @@ angular.module('App')
           console.log('correct');
           $scope.passwordCorrect = true;
           $location.path($location.url().replace('/login', ''));
+          $rootScope.loggedIn = true;
         } else {
           alert('incorrect');
           $scope.passwordCorrect = false;
