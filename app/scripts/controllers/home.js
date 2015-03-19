@@ -10,7 +10,7 @@
 
 angular.module('App')
   .controller('HomeCtrl', function ($scope, $rootScope, $firebaseArray, $location) {
-    var ref = new Firebase('https://lang-chat.firebaseio.com/chatRooms');
+    var ref = new Firebase($rootScope.URL);
     var sync = $firebaseArray(ref);
     // $scope.rooms = sync;
     var roomNameChosen = false;
@@ -24,7 +24,11 @@ angular.module('App')
         passwordVal: $scope.passwordVal
       }) .then(function(ref) {
         var id = ref.key();
-        $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-'));
+        if (!$scope.noPassword) {
+          $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-') + '/login');
+        } else {
+          $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-'));
+        }
       });
       console.log($scope.roomName + ' created');
       roomNameChosen = true;

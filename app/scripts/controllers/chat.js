@@ -10,7 +10,7 @@
 
 angular.module('App')
   .controller('ChatCtrl', function ($rootScope, $scope, $firebaseArray, $firebaseObject, $http, $routeParams) {
-    var chatRoom = new Firebase('https://lang-chat.firebaseio.com/chatRooms/' + $routeParams.roomId);
+    var chatRoom = new Firebase($rootScope.URL + $routeParams.roomId);
     var roomSync = $firebaseObject(chatRoom);
     $scope.roomInfo = roomSync;
 
