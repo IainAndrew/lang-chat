@@ -24,7 +24,7 @@ angular.module('App')
         passwordVal: $scope.passwordVal
       }) .then(function(ref) {
         var id = ref.key();
-        $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(' ', '-'));
+        $location.path('/' + id + '/' + $scope.roomName.toLowerCase().replace(/ /g, '-'));
         $rootScope.loggedIn = true;
       });
       console.log($scope.roomName + ' created');
