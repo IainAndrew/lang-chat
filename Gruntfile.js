@@ -138,7 +138,7 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= yeoman.dist %>/{,*/}*'
-            //'!<%= yeoman.dist %>/.git*'
+            // '!<%= yeoman.dist %>/.git*'
           ]
         }]
       },
@@ -382,6 +382,7 @@ module.exports = function (grunt) {
         singleRun: true
       }
     }
+
   });
 
 
