@@ -137,8 +137,8 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
-            '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git*'
+            '<%= yeoman.dist %>/{,*/}*'
+            //'!<%= yeoman.dist %>/.git*'
           ]
         }]
       },
@@ -359,6 +359,22 @@ module.exports = function (grunt) {
       ]
     },
 
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        connectCommits:false,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:IainAndrew/lang-chat.git',
+          branch: 'gh-pages'
+        }
+      }
+    },
+
     // Test settings
     karma: {
       unit: {
@@ -420,5 +436,9 @@ module.exports = function (grunt) {
     'newer:jshint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'buildcontrol:pages'
   ]);
 };
