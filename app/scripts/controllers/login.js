@@ -17,6 +17,9 @@ angular.module('App')
     $scope.passwordCorrect = false;
     roomSync.$loaded(function() {
       $scope.passwordRequired = !roomSync.noPassword;
+      if (roomSync.noPassword) {
+        $location.path($location.url().replace('/login', ''));
+      }
       $scope.passwordSubmit = function() {
         if ($scope.passwordEntered === roomSync.passwordVal) {
           console.log('correct');
