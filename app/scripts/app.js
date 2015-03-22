@@ -13,7 +13,8 @@ angular
   .module('App', [
     'ui.router',
     'firebase',
-    'ngRoute'
+    'ngRoute',
+    'app.directives.spinner'
   ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
