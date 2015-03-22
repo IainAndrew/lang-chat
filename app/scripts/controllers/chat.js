@@ -21,11 +21,13 @@ angular.module('App')
     $scope.usernameSelected = false;
     $scope.stayAnon = false;
     $scope.anonUsername = 'anon' + Math.floor((Math.random()*90000)+10000); // generate random username for anons
+    $rootScope.loading = true;
 
     roomSync.$loaded(function() {
       if ($rootScope.loggedIn === false && roomSync.noPassword === false) {
         $location.path($location.url() + '/login');
       }
+      $rootScope.loading = false;
     });
 
     chatRoom.authAnonymously(function(error, authData) {

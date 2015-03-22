@@ -37,6 +37,7 @@ angular
   .run([ '$rootScope', function ($rootScope) {
     $rootScope.URL = 'https://lang-chat.firebaseio.com/chatRooms/';
     $rootScope.loggedIn = false;
+    $rootScope.loading = false;
   }]);
   // .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
   //   $urlRouterProvider
