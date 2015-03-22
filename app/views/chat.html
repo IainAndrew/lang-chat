@@ -2,7 +2,7 @@
 
 <div id="messages">
   <div ng-repeat="message in chatMessages">
-    {{message.user}}: {{message.bodyTranslated}} {{message.time}}
+    <strong>{{message.user}}:</strong> {{message.bodyTranslated}} <span style="color:lightgrey;">{{message.time}}</span>
   </div>
 </div>
 
