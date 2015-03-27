@@ -40,19 +40,3 @@ angular
     $rootScope.loggedIn = false;
     $rootScope.loading = false;
   }]);
-  // .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
-  //   $urlRouterProvider
-  //     .otherwise('/');
-
-  //   $stateProvider
-  //     .state('main', {
-  //       url: '/',
-  //       templateUrl: 'views/main.html',
-  //       controller: 'HomeCtrl'
-  //     })
-  //     .state('chat', {
-  //       url: '/chat/:roomid',
-  //       templateUrl: 'views/chat.html',
-  //       controller: 'ChatCtrl'
-  //     });
-  // }]);
